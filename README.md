@@ -1,10 +1,3 @@
-<a href="https://discord.gg/X3Y2KUvU" target="_blank">
-    <img alt="discord" src="https://img.shields.io/discord/1140923583997165598?color=8987D2&label=discord&style=for-the-badge" />
-  </a>
- </p>
-<a href="https://github.com/cyoung06/Skyblock-Dungeons-Guide/releases" target="_blank">
-<img alt="downloads" src="https://img.shields.io/4/total?color=8987D2&style=for-the-badge" />
-</a>
 
 # Hypixel-Dungeon-Modpack
 This minecraft mod is meant to help you with the hypixel skyblock dungeons. As we all know that dungeons can be excruicatingly painful, that is why this mod was created. To help you have faster runs without losing out on that S+. It has all the solvers you will ever need, QOL features and statistics related features.  
