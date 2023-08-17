@@ -1,5 +1,5 @@
 <a href="https://discord.gg/X3Y2KUvU" target="_blank">
-    <img alt="discord" src="https://img.shields.io/discord/781913473872560189?color=00FFFF&label=discord&style=for-the-badge" />
+    <img alt="discord" src="https://img.shields.io/discord/1140923583997165598?color=00FFFF&label=discord&style=for-the-badge" />
   </a>
  </p>
 
