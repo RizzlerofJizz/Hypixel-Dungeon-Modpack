@@ -1,3 +1,17 @@
+<p align="center">
+<a href="https://github.com/cyoung06/Skyblock-Dungeons-Guide/releases" target="_blank">
+<img alt="Download Options" src="https://img.shields.io/github/downloads/cyoung06/Skyblock-Dungeons-Guide/total?color=00FFFF&style=for-the-badge" />
+</a>
+<a href="https://github.com/cyoung06/Skyblock-Dungeons-Guide/blob/master/LICENSE">
+    <img alt="license" src="https://img.shields.io/github/license/cyoung06/Skyblock-Dungeons-Guide?color=00FFFF&style=for-the-badge">
+ </a>
+  <a href="https://github.com/cyoung06/Skyblock-Dungeons-Guide/">
+    <img alt="lines" src="https://img.shields.io/tokei/lines/github/cyoung06/Skyblock-Dungeons-Guide?color=00FFFF&style=for-the-badge">
+ </a>
+    <a href="https://discord.gg/vuGsXhY5Bv" target="_blank">
+    <img alt="discord" src="https://img.shields.io/discord/781913473872560189?color=00FFFF&label=discord&style=for-the-badge" />
+  </a>
+ </p>
 
 # Hypixel-Dungeon-Modpack
 This minecraft mod is meant to help you with the hypixel skyblock dungeons. As we all know that dungeons can be excruicatingly painful, that is why this mod was created. To help you have faster runs without losing out on that S+. It has all the solvers you will ever need, QOL features and statistics related features.  
