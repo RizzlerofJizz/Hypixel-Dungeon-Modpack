@@ -12,10 +12,7 @@ div{
   padding: 5px; 
     }
 
-p1{
-  font-size: 30pt;
-  font: arial bold;
-}
+p1 = (font-size: 30pt, font: arial bold)
   
 </style>
 
