@@ -2,37 +2,64 @@
 This minecraft mod is meant to help you with dungeons by having these features:
 Features:
 
-Solvers
-
 F7 Terminal Solvers (Shows the correct solution/order.)
+
 Creeper Solver (Shows what sea lanterns to hit.)
+
 Simon Says Solver (Shows correct buttons to hit.)
+
 Blaze Room Solver (Shows what order to kill the blazes in.)
+
 Advanced Water Board Solver (Shows you what buttons to hit.)
+
 Tic-Tac-Toe Solver (Shows the correct tic-tac-toe solution.)
+
 Riddle Solver (Tells you the correct person, requires you to click all three characters first.)
+
 Ice Fill Solver (Shows the correct path through the ice puzzle.)
+
 Silverfish Solver (Shows what way you should hit the silverfish.)
-Bomb Defuse Solver (Shows the path through the pressure plates. Requires you to visit the left side and press a key to save the solution first, Required to be this way to follow Hypixel rules.)
+
+Bomb Defuse Solver (Shows the path through the pressure plates. 
+
 Secret Finder (Creates a line from the player towards the nearest secret. Video demonstrating this feature)
+
 Fairy Soul Finder (Shows the location of dungeon fairy souls.)
+
 QOL Features
+
 Secrets Chest Close (Hit any key while in a secret chest to close it.)
+
 Ability Cooldown (Shows ability cooldowns.)
+
 Spirit Boots Fixer (Fixes spirit boots changing your hand to air.)
+
 Blood Room Warning (Shows dungeon progress and if you should enter the boss arena or not.)
+
 Box Secret Bats (Creates a box around secret bats to make them easier to find, does not change their hitbox.)
+
 Box Real Livid (Creates a coloured box around the real Livid.)
+
 Box Skeleton Masters (Places a box around skeleton masters to make them easier to see.)
+
 Highlight Starred Mobs (Highlight starred mobs to make them easier to spot and kill.)
+
 Dungeon Map (See the layout of a dungeon, room progress, other players positions and the total secrets in each room.)
+
 Reparty/Auto reparty (Disbands and reinvites all members of the party.)
+
 Disable Ability Messages (Prevents messages such as you were hit for X Damage showing in chat.)
+
 Spirit Bear Summon Percentage (Shows how close the spirit bear is to spawning.)
+
 Low-Health Warning (Shows a player name and health if they have less than 500 hp left.
+
 Custom Party Finder GUI (A nicer party finder gui.)
+
 Statistics Related Features
+
 View Room Name (Shows the name of your current room in a dungeon.)
+
 Party Profile Viewer (Hover over the view button in chat to view a persons armour, total secrets, lily weight, talismans and additional configurable statistics.)
 Profit Calculator (Shows how much you will profit/lose my opening a dungeons chest.)
 Price Viewer (Shows the BIN and AH price of an item.)
