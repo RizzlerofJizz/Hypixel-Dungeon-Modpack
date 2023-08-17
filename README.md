@@ -3,7 +3,7 @@
   </a>
  </p>
 <a href="https://github.com/cyoung06/Skyblock-Dungeons-Guide/releases" target="_blank">
-<img alt="downloads" src="https://img.shields.io/github/downloads/cyoung06/Skyblock-Dungeons-Guide/total?color=8987D2&style=for-the-badge" />
+<img alt="downloads" src="https://img.shields.io/4/total?color=8987D2&style=for-the-badge" />
 </a>
 
 # Hypixel-Dungeon-Modpack
