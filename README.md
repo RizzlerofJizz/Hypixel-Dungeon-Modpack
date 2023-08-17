@@ -11,8 +11,6 @@ div{
   font-weight: bold;
   padding: 5px; 
     }
-
-p1 = (font-size: 30pt, font: arial bold)
   
 </style>
 
@@ -40,7 +38,7 @@ alt="bussyness" height="100" width="100">
   </a>
  </p>
 
-<p1>
+<p1 (font-size: 30pt, font: arial bold)>
 
   Hypixel Dungeon Modpack
 
