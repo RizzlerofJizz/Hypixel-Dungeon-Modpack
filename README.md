@@ -1,7 +1,9 @@
 # Hypixel-Dungeon-Modpack
 This minecraft mod is meant to help you with dungeons by having these features:
-Features
+Features:
+
 Solvers
+
 F7 Terminal Solvers (Shows the correct solution/order.)
 Creeper Solver (Shows what sea lanterns to hit.)
 Simon Says Solver (Shows correct buttons to hit.)
