@@ -1,3 +1,22 @@
+<style type="text/css">
+
+div{
+  background-color: whitesmoke;
+  width: 1410;
+  height: 440px;
+  font-weight: bold;
+  padding: 5px; 
+    }
+
+</style>
+
+<div>
+
+<img src="https://i.ibb.co/FgF2xgc/Picture-1.png"
+alt="bussyness" height="100" width="100">
+
+</div>
+
 <p align="center">
 <a href="https://github.com/cyoung06/Skyblock-Dungeons-Guide/releases" target="_blank">
 <img alt="Download Options" color="red" />
