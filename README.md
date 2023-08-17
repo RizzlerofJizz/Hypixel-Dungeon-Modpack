@@ -3,14 +3,32 @@ This minecraft mod is meant to help you with the hypixel skyblock dungeons. As w
 
 ## Some of these features include (But not limited to):
 ### Solvers
-- **F7 Terminal Solvers** (Shows the correct solution/order.)
-- **Creeper Solver** (Shows what sea lanterns to hit.)
-- **Simon Says Solver** (Shows correct buttons to hit.)
-- **Blaze Room Solver** (Shows what order to kill the blazes in.)
+- **F7 Terminal Solvers** 
+- **Creeper Solver** 
+- **Simon Says Solver** 
+- **Blaze Room Solver (also has a line going to what blaze you need to kill next)** (For faster runs)
 - **Fast WaterBoard Solver (You can do all in one flow)** 
 - **Riddle Solver** 
 - **Ice Fill Solver** 
 - **Silverfish Solver** 
 - **Bomb Defuse Solver** 
-- **Secret Finder** 
+- **Secret Finder**
+- **Does not include tic tac toe solver, use common sense or you don't deserve to play**
 
+### QOL Features
+- **Highlight Starred Mobs** (For faster bloodrush in F7)
+- **Real Time Dungeon Map**
+- **Better Dungeon Map**
+- **Reparty**
+- **Disables Hyperion message** 
+- **Tells when spirit bear is summoned** 
+- **Party finder view player stats**
+
+### More Features
+- **Profit Calculator**
+- **Price Viewer (LBIN only)**
+- **See Boss Health** 
+- **Dungeon Death Indicator** (Shows death, so you can kick monkeys from your party)
+- **Dungeon Score Calculator** 
+- **Obtained Secret Indicator** 
+- **Current Milestone Indicator** 
