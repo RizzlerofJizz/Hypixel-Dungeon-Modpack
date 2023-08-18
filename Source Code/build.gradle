@@ -1,0 +1,165 @@
+plugins {
+    id "idea"
+    id "java"
+    id "com.github.johnrengelman.shadow" version "7.1.2"
+    id "dev.architectury.architectury-pack200" version "0.1.3"
+    id "gg.essential.loom" version "0.10.0.+"
+}
+
+version = "4.0.0"
+group = "kr.syeyoung.dungeonsguide"
+archivesBaseName = "dungeonsguide"
+
+
+java {
+    toolchain.languageVersion.set(JavaLanguageVersion.of(8))
+}
+
+loom {
+    launchConfigs {
+        client {
+            // probably will have to my own mixin tweaker, due to dungeonsguide's weird dynamic loading stuff
+//            property("mixin.debug", "true")
+//            property("asmhelper.verbose", "true")
+//            arg("--mixin", "mixins.examplemod.json")
+
+        }
+    }
+    runConfigs {
+        named("client") {
+            ideConfigGenerated(true)
+            vmArgs.remove("-XstartOnFirstThread")
+        }
+    }
+    runs {
+
+        client {
+            runDir = '../runtime'
+            property('devauth.enabled','true')
+            property("fml.coreMods.load", "kr.syeyoung.dungeonsguide.launcher.coremod.DGTweaker")
+            client()
+            vmArgs.remove("-XstartOnFirstThread")
+        }
+    }
+    forge {
+        pack200Provider.set(new dev.architectury.pack200.java.Pack200Adapter())
+    }
+}
+
+
+sourceSets.main {
+    output.setResourcesDir(file("$buildDir/classes/java/main"))
+}
+
+
+repositories {
+    mavenCentral()
+    maven { url "https://jitpack.io" }
+    // dev auth
+    maven {url "https://pkgs.dev.azure.com/djtheredstoner/DevAuth/_packaging/public/maven/v1"}
+}
+
+configurations {
+    implementation.extendsFrom shadowImpl
+    modRuntimeOnly.extendsFrom devEnv {
+        transitive = false
+        visible = false
+    }
+    unmappedMod {
+        visible = false
+    }
+    remappedMod {
+        visible = false
+    }
+}
+dependencies {
+    minecraft("com.mojang:minecraft:1.8.9")
+    mappings("de.oceanlabs.mcp:mcp_stable:22-1.8.9")
+    forge("net.minecraftforge:forge:1.8.9-11.15.1.2318-1.8.9")
+
+    implementation "org.jetbrains:annotations-java5:19.0.0"
+    implementation "org.json:json:20220924"
+    implementation 'io.nayuki:qrcodegen:1.4.0'
+    implementation 'org.bouncycastle:bcpg-jdk15on:1.70'
+
+    implementation "com.twelvemonkeys.imageio:imageio-bmp:3.7.0"
+
+    compileOnly "org.projectlombok:lombok:1.18.20"
+    annotationProcessor "org.projectlombok:lombok:1.18.16"
+
+    testCompileOnly "org.projectlombok:lombok:1.18.20"
+    testAnnotationProcessor "org.projectlombok:lombok:1.18.20"
+
+
+    devEnv("me.djtheredstoner:DevAuth-forge-legacy:1.1.0")
+
+    unmappedMod(project(path: ':mod', configuration: 'unmappedMod'))
+    remappedMod(project(path: ':mod', configuration: 'remappedMod'))
+}
+
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
+tasks.withType(Jar) {
+    archivesBaseName = "dungeonsguide-loader"
+    manifest {
+        attributes["FMLCorePluginContainsFMLMod"] = "true"
+        attributes["FMLCorePlugin"] = 'kr.syeyoung.dungeonsguide.launcher.coremod.DGTweaker'
+//        attributes["ForceLoadAsMod"] = "true" not applicable, not using mixins
+//        attributes["TweakClass"] = "kr.syeyoung.dungeonsguide.launcher.coremod.DGTweaker"
+
+        // If you don't want mixins, remove these lines
+//        this["TweakClass"] = "org.spongepowered.asm.launch.MixinTweaker"
+//        this["MixinConfigs"] = "mixins.examplemod.json"
+    }
+}
+
+
+tasks.shadowJar {
+    archiveFileName = jar.archiveFileName
+    exclude "META-INF/versions/**"
+    dependencies {
+        include(dependency("org.slf4j:slf4j-api:1.7.25"))
+        include(dependency("org.json:json:20220924"))
+        include(dependency("org.bouncycastle:bcpg-jdk15on:1.70"))
+        include(dependency("org.bouncycastle:bcprov-jdk15on:1.70"))
+        include(dependency("com.twelvemonkeys..*:.*"))
+    }
+}
+
+tasks.named("remapJar") {
+    archiveClassifier = "mapped"
+    from(tasks.shadowJar)
+    input = tasks.shadowJar.archiveFile
+}
+
+task standaloneConsumerJar(type: Jar) {
+    archiveClassifier = "standalone"
+    from(zipTree(tasks.remapJar.archiveFile))
+    from(configurations.remappedMod.files) {
+        rename ".+\\.jar", "mod.jar"
+    }
+    doLast {
+        println(archiveFile.get().asFile)
+    }
+}
+task standaloneDevJar(type: Jar) {
+    archiveClassifier = "devStandalone"
+    from(zipTree(tasks.shadowJar.archiveFile))
+    from(configurations.unmappedMod.files) {
+        rename ".+\\.jar", "mod.jar"
+    }
+    doLast {
+        println(archiveFile.get().asFile)
+    }
+}
+
+
+
+tasks.assemble.dependsOn tasks.remapJar
+
+task buildStandaloneJars {}
+
+tasks.buildStandaloneJars.dependsOn tasks.standaloneConsumerJar, tasks.standaloneDevJar
