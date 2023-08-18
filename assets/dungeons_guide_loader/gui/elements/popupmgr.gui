@@ -1,3 +1,0 @@
-<stack bind:ref="stackRef">
-    <slot bind:child="_"/>
-</stack>
