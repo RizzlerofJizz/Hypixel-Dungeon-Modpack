@@ -18,3 +18,18 @@ This minecraft mod is meant to help you with the hypixel skyblock dungeons. As w
 - **Real Time Dungeon Map**
 - **Better Dungeon Map**
 - **Reparty**
+- **Disables Hyperion message** 
+- **Tells when spirit bear is summoned** 
+- **Party finder view player stats**
+
+### More Features
+- **Profit Calculator**
+- **Price Viewer (LBIN only)**
+- **See Boss Health** 
+- **Dungeon Death Indicator** (Shows death, so you can kick monkeys from your party)
+- **Dungeon Score Calculator** 
+- **Obtained Secret Indicator** 
+- **Current Milestone Indicator** </p>
+
+Frequent Questions:
+Is it Bannable: No it is not, hypixel approves of all these mods, even the f7 terminal solvers (because they only show solution and don't do it for you)
