@@ -1,0 +1,34 @@
+<!--
+  ~ Dungeons Guide - The most intelligent Hypixel Skyblock Dungeons Mod
+  ~ Copyright (C) 2023  cyoung06 (syeyoung)
+  ~
+  ~ This program is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU Affero General Public License as published
+  ~ by the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU Affero General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Affero General Public License
+  ~ along with this program.  If not, see <https://www.gnu.org/licenses/>.
+  -->
+
+<UnconstrainedBox>
+    <size width="86">
+        <scaler bind:scale="scale">
+            <border>
+                <line slot="left" dir="VERTICAL" thickness="1.0" color="#FF444444"/>
+                <line slot="top" dir="HORIZONTAL" thickness="1.0" color="#FF444444"/>
+                <line slot="bottom" dir="HORIZONTAL" thickness="1.0" color="#FF444444"/>
+                <line slot="right" dir="VERTICAL" thickness="1.0" color="#FF444444"/>
+                <bgcolor slot="content" backgroundColor="#FF262626">
+                    <col bind:_="children">
+                    </col>
+                </bgcolor>
+            </border>
+        </scaler>
+    </size>
+</UnconstrainedBox>
