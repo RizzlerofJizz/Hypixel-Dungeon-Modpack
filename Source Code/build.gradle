@@ -1,0 +1,186 @@
+plugins {
+    id "signing"
+    id "idea"
+    id "java"
+    id "com.github.johnrengelman.shadow" version "7.1.2"
+    id "dev.architectury.architectury-pack200" version "0.1.3"
+    id "gg.essential.loom" version "0.10.0.+"
+}
+
+version = "4.0.0-beta7.5"
+group = "kr.syeyoung.dungeonsguide"
+archivesBaseName = "dungeonsguide"
+
+java {
+    toolchain.languageVersion.set(JavaLanguageVersion.of(8))
+}
+
+sourceSets.main {
+    output.setResourcesDir(file("$buildDir/classes/java/main"))
+}
+
+signing {
+    useGpgCmd()
+    if (project.findProperty("dg.dosign") == "true"){
+        sign configurations.archives
+    }
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        url "https://jitpack.io/"
+        content {
+            includeGroupByRegex("(com|io)\\.github\\..+")
+        }
+    }
+    maven { url "https://pkgs.dev.azure.com/djtheredstoner/DevAuth/_packaging/public/maven/v1" }
+}
+
+configurations {
+    implementation.extendsFrom shadowImpl
+    
+    remappedMod {
+        canBeConsumed = true
+        canBeResolved = false
+    }
+    unmappedMod {
+        canBeConsumed = true
+        canBeResolved = false
+    }
+}
+
+def devenvMod = configurations.create("devenvMod") {
+    setTransitive(false)
+    setVisible(false)
+}
+
+def testWithNeu = project.findProperty("dg.testwithneu") == "true"
+printf("TestWithNeu: %s", testWithNeu)
+
+dependencies {
+    minecraft("com.mojang:minecraft:1.8.9")
+    mappings("de.oceanlabs.mcp:mcp_stable:22-1.8.9")
+    forge("net.minecraftforge:forge:1.8.9-11.15.1.2318-1.8.9")
+
+
+    implementation "org.jetbrains:annotations-java5:19.0.0"
+    implementation "org.java-websocket:Java-WebSocket:1.5.1"
+    implementation 'com.github.Dungeons-Guide:DiscordIPC:1d33a1c'
+    implementation "com.twelvemonkeys.imageio:imageio-bmp:3.7.0"
+
+
+    implementation 'net.java.dev.jna:jna:5.12.1' // sorry minecraft.
+
+
+    compileOnly "org.projectlombok:lombok:1.18.20"
+    compileOnly files("../jars/Hychat-1.12.1-BETA.jar")
+    annotationProcessor "org.projectlombok:lombok:1.18.16"
+
+    testCompileOnly "org.projectlombok:lombok:1.18.20"
+    testAnnotationProcessor "org.projectlombok:lombok:1.18.20"
+
+
+    compileOnly project(path: ":loader")
+    runtimeOnly project(path: ":loader")
+
+    if (testWithNeu) {
+        runtimeOnly 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.7.22'
+//        add("devenvMod", 'com.github.notenoughupdates:notenoughupdates:1f4d692:all')
+//        add("devenvMod", 'com.github.notenoughupdates:notenoughupdates:museumthing-SNAPSHOT:all')
+    }
+    def files= fileTree("../runtime/mods2").filter { it.isFile() }
+    add("devenvMod", files)
+}
+
+loom {
+    launchConfigs {
+        client {
+            // probably will have to my own mixin tweaker, due to dungeonsguide's weird dynamic loading stuff
+//            property("mixin.debug", "true")
+//            property("asmhelper.verbose", "true")
+//            arg("--mixin", "mixins.examplemod.json")
+            arg("--mods", devenvMod.files.collect { file("../runtime").relativePath(it) }.join(","))
+        }
+    }
+    runConfigs {
+        named("client") {
+            ideConfigGenerated(true)
+            vmArgs.remove("-XstartOnFirstThread")
+        }
+    }
+    runs {
+        client {
+            runDir = '../runtime'
+            property('devauth.enabled', 'true')
+            property("fml.coreMods.load", "kr.syeyoung.dungeonsguide.launcher.coremod.DGTweaker")
+            property('dg.loader', 'devenv')
+            client()
+            vmArgs.remove("-XstartOnFirstThread")
+        }
+    }
+    forge {
+        pack200Provider.set(new dev.architectury.pack200.java.Pack200Adapter())
+    }
+}
+
+ext.genOutputDir = file("$buildDir/generated-resources")
+
+task generateVersionInfo {
+    ext.outputFile = file("$genOutputDir/versionMeta.properties")
+    outputs.file(outputFile)
+    doLast {
+        outputFile.text = "VERSION=${project.version}\nMANDATORY_VERSION=0"
+    }
+}
+sourceSets.main.output.dir genOutputDir, builtBy: generateVersionInfo
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
+tasks.withType(Jar) {
+    archivesBaseName = "dungeonsguide"
+    manifest {
+        // If you don't want mixins, remove these lines
+//        this["TweakClass"] = "org.spongepowered.asm.launch.MixinTweaker"
+//        this["MixinConfigs"] = "mixins.examplemod.json"
+    }
+
+
+}
+
+
+tasks.shadowJar {
+
+    archiveFileName = jar.archiveFileName
+
+//    relocate 'com.sun.jna', "kr.syeyoung.dungeonsguide.com.sun.jna"
+    relocate "org.java_websocket", "kr.syeyoung.dungeonsguide.org.java_websocket"
+    relocate 'com.jagrosh.discordipc', 'kr.syeyoung.dungeonsguide.com.jagrosh.discordipc'
+
+    dependencies {
+        include(dependency("org.java-websocket:Java-WebSocket:1.5.1"))
+        include(dependency("org.slf4j:slf4j-api:1.7.25"))
+        include(dependency("com.kohlschutter.junixsocket:junixsocket-common:2.3.4"))
+        include(dependency("com.kohlschutter.junixsocket:junixsocket-native-common:2.3.4"))
+        include(dependency("net.java.dev.jna:jna:5.12.1"))
+        include(dependency("com.github.Dungeons-Guide:DiscordIPC:1d33a1c"))
+    }
+}
+
+tasks.named("remapJar") {
+    archiveClassifier = "mapped"
+    from(tasks.shadowJar)
+    input = tasks.shadowJar.archiveFile
+}
+
+
+tasks.assemble.dependsOn tasks.remapJar
+
+artifacts {
+    remappedMod(tasks.remapJar)
+    unmappedMod(tasks.shadowJar)
+}
+
+
