@@ -1,5 +1,6 @@
 # Hypixel-Dungeon-Modpack
 This minecraft mod is meant to help you with the hypixel skyblock dungeons. As we all know that dungeons can be excruicatingly painful, that is why this mod was created. To help you have faster runs without losing out on that S+. It has all the solvers you will ever need, QOL features and statistics related features.  
+
 ## Some of these features include (But not limited to):
 ### Solvers
 - **F7 Terminal Solvers** 
@@ -30,6 +31,8 @@ This minecraft mod is meant to help you with the hypixel skyblock dungeons. As w
 - **Dungeon Score Calculator** 
 - **Obtained Secret Indicator** 
 - **Current Milestone Indicator** </p>
+
+[Click me to download](https://github.com/RizzlerofJizz/Hypixel-Dungeon-Modpack/releases/tag/v1.0.0)
 
 Frequent Questions:
 Is it Bannable: No it is not, hypixel approves of all these mods, even the f7 terminal solvers (because they only show solution and don't do it for you)
