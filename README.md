@@ -32,7 +32,7 @@ This minecraft mod is meant to help you with the hypixel skyblock dungeons. As w
 - **Obtained Secret Indicator** 
 - **Current Milestone Indicator** </p>
 
-[Click me to download](https://github.com/RizzlerofJizz/Hypixel-Dungeon-Modpack/releases/tag/v1.0.0)
+[Click me to download](https://github.com/RizzlerofJizz/Hypixel-Dungeon-Modpack/releases/tag/v1.0.1)
 
 Frequent Questions:
 Is it Bannable: No it is not, hypixel approves of all these mods, even the f7 terminal solvers (because they only show solution and don't do it for you)
