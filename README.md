@@ -1,6 +1,8 @@
 # Hypixel-Dungeon-Modpack
 This minecraft mod is meant to help you with the hypixel skyblock dungeons. As we all know that dungeons can be excruicatingly painful, that is why this mod was created. To help you have faster runs without losing out on that S+. It has all the solvers you will ever need, QOL features and statistics related features.  
 
+### Please note that you have to press P to enable the setting to turn the features on and that most of the features are currently being fixed at the moment
+
 ## Some of these features include (But not limited to):
 ### Solvers
 - **F7 Terminal Solvers** 
